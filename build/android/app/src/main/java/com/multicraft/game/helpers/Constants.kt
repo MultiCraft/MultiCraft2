@@ -1,7 +1,7 @@
 /*
 MultiCraft
-Copyright (C) 2014-2020 MoNTE48, Maksim Gamarnik <MoNTE48@mail.ua>
-Copyright (C) 2014-2020 ubulem,  Bektur Mambetov <berkut87@gmail.com>
+Copyright (C) 2014-2021 MoNTE48, Maksim Gamarnik <MoNTE48@mail.ua>
+Copyright (C) 2014-2021 ubulem,  Bektur Mambetov <berkut87@gmail.com>
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU Lesser General Public License as published by
@@ -18,8 +18,13 @@ with this program; if not, write to the Free Software Foundation, Inc.,
 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 */
 
-package com.multicraft.game.callbacks;
+package com.multicraft.game.helpers
 
-public interface CallBackListener {
-	void onEvent(boolean isContinue);
+import com.multicraft.game.BuildConfig
+
+object Constants {
+	const val REQUEST_CONNECTION = 104
+	const val NO_SPACE_LEFT = "ENOSPC"
+	const val FILES = "Files.zip"
+	const val versionName = BuildConfig.VERSION_NAME
 }
