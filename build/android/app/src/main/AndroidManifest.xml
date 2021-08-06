@@ -31,8 +31,7 @@
 		android:label="@string/app_name"
 		android:resizeableActivity="false"
 		android:roundIcon="@mipmap/ic_launcher_round"
-		tools:ignore="UnusedAttribute"
-		tools:replace="android:fullBackupContent">
+		tools:ignore="UnusedAttribute">
 
 		<meta-data
 			android:name="android.max_aspect"
