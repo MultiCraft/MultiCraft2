@@ -19,10 +19,6 @@
 		android:name="android.hardware.wifi"
 		android:required="false" />
 
-	<uses-feature
-		android:name="android.hardware.screen.portrait"
-		android:required="false" />
-
 	<supports-screens
 		android:largeScreens="true"
 		android:xlargeScreens="true" />
@@ -74,7 +70,6 @@
 		<service
 			android:name="com.multicraft.game.UnzipService"
 			android:permission="android.permission.BIND_JOB_SERVICE" />
-
 	</application>
 
 </manifest>
