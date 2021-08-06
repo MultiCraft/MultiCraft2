@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools">
 
-	<style name="AppTheme" parent="Theme.MaterialComponents.DayNight">
+	<style name="AppTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+		<item name="windowActionBar">false</item>
 		<item name="android:windowBackground">@drawable/bg</item>
 		<item name="android:windowFullscreen">true</item>
-		<item name="android:windowLayoutInDisplayCutoutMode" tools:targetApi="p">shortEdges
-		</item>
+		<item name="android:windowLayoutInDisplayCutoutMode" tools:targetApi="p">shortEdges</item>
 		<item name="fontFamily">@font/retron2000</item>
 		<item name="colorPrimary">@color/green</item>
 	</style>

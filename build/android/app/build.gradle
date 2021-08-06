@@ -9,8 +9,8 @@ android {
 		applicationId 'com.multicraft.game'
 		minSdkVersion 19
 		targetSdkVersion 30
-		versionCode project.versionCode
 		versionName "${versionMajor}.${versionMinor}.${versionPatch}"
+		versionCode project.versionCode
 	}
 
 	// load properties
@@ -57,6 +57,7 @@ android {
 	}
 }
 
+import com.android.build.OutputFile
 import org.apache.tools.ant.taskdefs.condition.Os
 
 task prepareAssetsFiles() {
@@ -120,7 +121,7 @@ def abiCodes = ['armeabi-v7a': 0, 'arm64-v8a': 1]
 android.applicationVariants.all { variant ->
 	variant.outputs.each {
 		output ->
-			def abiName = output.getFilter(com.android.build.OutputFile.ABI)
+			def abiName = output.getFilter(OutputFile.ABI)
 			output.versionCodeOverride = abiCodes.get(abiName, 0) + variant.versionCode
 	}
 }

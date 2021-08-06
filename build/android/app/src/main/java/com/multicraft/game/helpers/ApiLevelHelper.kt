@@ -30,14 +30,12 @@ object ApiLevelHelper {
 		return SDK_INT >= versionCode
 	}
 
-	@JvmStatic
 	val isKitKat: Boolean
 		get() = isGreaterOrEqual(KITKAT)
 
 	val isMarshmallow: Boolean
 		get() = isGreaterOrEqual(Build.VERSION_CODES.M)
 
-	@JvmStatic
 	val isOreo: Boolean
 		get() = isGreaterOrEqual(O)
 }
