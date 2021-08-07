@@ -1,3 +1,23 @@
+/*
+MultiCraft
+Copyright (C) 2014-2021 MoNTE48, Maksim Gamarnik <MoNTE48@mail.ua>
+Copyright (C) 2014-2021 ubulem,  Bektur Mambetov <berkut87@gmail.com>
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU Lesser General Public License as published by
+the Free Software Foundation; either version 3.0 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Lesser General Public License for more details.
+
+You should have received a copy of the GNU Lesser General Public License along
+with this program; if not, write to the Free Software Foundation, Inc.,
+51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+*/
+
 package com.multicraft.game
 
 import android.content.*
@@ -65,6 +85,7 @@ class MainActivity : AppCompatActivity() {
 	private var connectionSub: Disposable? = null
 	private var cleanSub: Disposable? = null
 	private var copySub: Disposable? = null
+
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
 		window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
@@ -216,11 +237,7 @@ class MainActivity : AppCompatActivity() {
 			UnzipService.EXTRA_KEY_IN_FILE,
 			file as ArrayList<String>
 		)
-		try {
-			enqueueWork(this, intent)
-		} catch (e: IllegalArgumentException) {
-			finish() // OEM bug on Android 8.1. Can do nothing
-		}
+		enqueueWork(this, intent)
 	}
 
 	private fun showRestartDialog(space: Boolean) {
