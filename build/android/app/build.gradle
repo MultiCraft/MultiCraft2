@@ -3,7 +3,7 @@ apply plugin: 'kotlin-android'
 
 android {
 	compileSdkVersion 30
-	buildToolsVersion '30.0.3'
+	buildToolsVersion '31.0.0'
 	ndkVersion '22.1.7171670'
 	defaultConfig {
 		applicationId 'com.multicraft.game'
@@ -54,6 +54,9 @@ android {
 	compileOptions {
 		sourceCompatibility JavaVersion.VERSION_1_8
 		targetCompatibility JavaVersion.VERSION_1_8
+	}
+	buildFeatures {
+		viewBinding true
 	}
 }
 

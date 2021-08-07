@@ -3,7 +3,7 @@
 	android:layout_height="match_parent">
 
 	<ProgressBar
-		android:id="@+id/PB"
+		android:id="@+id/progress_bar"
 		style="@style/Widget.MaterialComponents.LinearProgressIndicator"
 		android:layout_width="400dp"
 		android:layout_height="45dp"
@@ -16,7 +16,7 @@
 		android:visibility="gone" />
 
 	<ProgressBar
-		android:id="@+id/PB_Indet"
+		android:id="@+id/progress_circle"
 		style="@style/Widget.AppCompat.ProgressBar"
 		android:layout_width="75dp"
 		android:layout_height="75dp"
@@ -27,7 +27,7 @@
 		android:id="@+id/tv_progress"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
-		android:layout_below="@id/PB_Indet"
+		android:layout_below="@id/progress_circle"
 		android:layout_centerInParent="true"
 		android:text="@string/loading"
 		android:textColor="@color/not_white"
