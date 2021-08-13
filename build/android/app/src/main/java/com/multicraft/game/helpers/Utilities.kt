@@ -47,8 +47,8 @@ import com.multicraft.game.R
 import com.multicraft.game.helpers.ApiLevelHelper.isKitKat
 import com.multicraft.game.helpers.ApiLevelHelper.isMarshmallow
 import com.multicraft.game.helpers.ApiLevelHelper.isOreo
-import com.multicraft.game.helpers.PreferencesHelper.TAG_SHORTCUT_EXIST
-import com.multicraft.game.helpers.PreferencesHelper.getInstance
+import com.multicraft.game.helpers.PreferenceHelper.TAG_SHORTCUT_EXIST
+import com.multicraft.game.helpers.PreferenceHelper.set
 import java.io.File
 import java.io.InputStream
 import kotlin.math.roundToInt
@@ -124,7 +124,7 @@ object Utilities {
 		addIntent.action = "com.android.launcher.action.INSTALL_SHORTCUT"
 		activity.applicationContext.sendBroadcast(addIntent)
 		// save preference
-		getInstance(activity).saveSettings(TAG_SHORTCUT_EXIST, true)
+		PreferenceHelper.init(activity)[TAG_SHORTCUT_EXIST] = true
 	}
 
 	@JvmStatic
