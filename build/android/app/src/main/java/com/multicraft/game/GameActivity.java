@@ -28,21 +28,22 @@ import static com.multicraft.game.helpers.Utilities.getTotalMem;
 import static com.multicraft.game.helpers.Utilities.makeFullScreen;
 
 import android.app.NativeActivity;
+import android.content.Intent;
 import android.content.res.Configuration;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.KeyEvent;
-import android.view.LayoutInflater;
-import android.view.View;
 import android.view.WindowManager.LayoutParams;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
+import android.widget.EditText;
 
 import androidx.appcompat.app.AlertDialog;
 
-import com.google.android.material.textfield.TextInputEditText;
-import com.google.android.material.textfield.TextInputLayout;
+import com.multicraft.game.databinding.InputTextBinding;
 
+@SuppressWarnings("unused")
 public class GameActivity extends NativeActivity {
 	static {
 		try {
@@ -109,19 +110,17 @@ public class GameActivity extends NativeActivity {
 	private void showDialogUI(String hint, String current, int editType) {
 		final AlertDialog.Builder builder = new AlertDialog.Builder(this);
 		if (editType == 1) builder.setPositiveButton(R.string.done, null);
-		View layout = LayoutInflater.from(this).inflate(R.layout.input_text, null);
-		TextInputLayout inputLayout = layout.findViewById(R.id.inputLayout);
-		TextInputEditText editText = layout.findViewById(R.id.editText);
+		InputTextBinding binding = InputTextBinding.inflate(getLayoutInflater());
 		String hintText = (!hint.isEmpty()) ? hint : getResources().getString(
 				(editType == 3) ? R.string.input_password : R.string.input_text);
-		inputLayout.setHint(hintText);
-		builder.setView(layout);
+		binding.inputLayout.setHint(hintText);
+		builder.setView(binding.getRoot());
 		AlertDialog alertDialog = builder.create();
+		EditText editText = binding.editText;
 		editText.requestFocus();
 		editText.setText(current);
 		if (editType != 1) editText.setImeOptions(EditorInfo.IME_FLAG_NO_FULLSCREEN);
 		final InputMethodManager imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
-		imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, InputMethodManager.HIDE_IMPLICIT_ONLY);
 		int inputType = TYPE_CLASS_TEXT;
 		if (editType == 1) {
 			inputType = inputType | TYPE_TEXT_FLAG_MULTI_LINE;
@@ -140,6 +139,8 @@ public class GameActivity extends NativeActivity {
 			}
 			return false;
 		});
+		// should be above `show()`
+		alertDialog.getWindow().setSoftInputMode(LayoutParams.SOFT_INPUT_STATE_VISIBLE);
 		alertDialog.show();
 		Button button = alertDialog.getButton(AlertDialog.BUTTON_POSITIVE);
 		if (button != null) {
@@ -179,5 +180,13 @@ public class GameActivity extends NativeActivity {
 	}
 
 	public void notifyExitGame() {
+	}
+
+	public void openURI(String uri) {
+		try {
+			Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(uri));
+			startActivity(browserIntent);
+		} catch (Exception ignored) {
+		}
 	}
 }

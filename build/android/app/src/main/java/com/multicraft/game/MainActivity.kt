@@ -33,10 +33,9 @@ import androidx.core.graphics.BlendModeColorFilterCompat
 import androidx.core.graphics.BlendModeCompat
 import com.multicraft.game.UnzipService.Companion.enqueueWork
 import com.multicraft.game.databinding.ActivityMainBinding
-import com.multicraft.game.helpers.Constants.FILES
-import com.multicraft.game.helpers.Constants.NO_SPACE_LEFT
-import com.multicraft.game.helpers.Constants.REQUEST_CONNECTION
-import com.multicraft.game.helpers.Constants.versionName
+import com.multicraft.game.Constants.FILES
+import com.multicraft.game.Constants.NO_SPACE_LEFT
+import com.multicraft.game.Constants.REQUEST_CONNECTION
 import com.multicraft.game.helpers.PreferenceHelper
 import com.multicraft.game.helpers.PreferenceHelper.TAG_BUILD_VER
 import com.multicraft.game.helpers.PreferenceHelper.TAG_LAUNCH_TIMES
@@ -85,6 +84,7 @@ class MainActivity : AppCompatActivity() {
 	private var connectionSub: Disposable? = null
 	private var cleanSub: Disposable? = null
 	private var copySub: Disposable? = null
+	private val versionName = BuildConfig.VERSION_NAME
 
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
@@ -168,17 +168,16 @@ class MainActivity : AppCompatActivity() {
 
 	private fun startNative() {
 		val intent = Intent(this, GameActivity::class.java)
-		intent.flags =
-			Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_CLEAR_TASK
+		intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_CLEAR_TASK
 		startActivity(intent)
 	}
 
 	private fun cleanUpOldFiles() {
 		updateViews(R.string.preparing, View.VISIBLE, View.GONE)
 		val filesList = listOf(
-			File(externalStorage, "cache"),
 			File(externalStorage, "debug.txt"),
 			File(filesDir, "builtin"),
+			File(filesDir, "textures" + File.separator + "base"),
 			File(cacheDir, FILES),
 		)
 		cleanSub = Completable.fromAction { deleteFiles(filesList) }

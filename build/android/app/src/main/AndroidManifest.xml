@@ -8,9 +8,6 @@
 	<uses-permission android:name="android.permission.INTERNET" />
 	<uses-permission android:name="android.permission.WAKE_LOCK" />
 	<uses-permission android:name="com.android.launcher.permission.INSTALL_SHORTCUT" />
-	<uses-permission
-		android:name="android.permission.WRITE_EXTERNAL_STORAGE"
-		android:maxSdkVersion="28" />
 
 	<uses-feature
 		android:name="android.hardware.touchscreen"
@@ -41,6 +38,7 @@
 		<activity
 			android:name="com.multicraft.game.MainActivity"
 			android:configChanges="orientation|keyboardHidden|navigation|screenSize"
+			android:exported="true"
 			android:maxAspectRatio="3.0"
 			android:screenOrientation="sensorLandscape"
 			android:theme="@style/AppTheme">
@@ -53,6 +51,7 @@
 		<activity
 			android:name="com.multicraft.game.GameActivity"
 			android:configChanges="orientation|keyboard|keyboardHidden|navigation|screenSize|smallestScreenSize"
+			android:exported="true"
 			android:hardwareAccelerated="true"
 			android:launchMode="singleTask"
 			android:maxAspectRatio="3.0"

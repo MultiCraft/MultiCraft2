@@ -18,13 +18,10 @@ with this program; if not, write to the Free Software Foundation, Inc.,
 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 */
 
-package com.multicraft.game.helpers
-
-import com.multicraft.game.BuildConfig
+package com.multicraft.game
 
 object Constants {
 	const val REQUEST_CONNECTION = 104
 	const val NO_SPACE_LEFT = "ENOSPC"
 	const val FILES = "Files.zip"
-	const val versionName = BuildConfig.VERSION_NAME
 }
