@@ -1,7 +1,7 @@
 /*
 MultiCraft
-Copyright (C) 2014-2020 MoNTE48, Maksim Gamarnik <MoNTE48@mail.ua>
-Copyright (C) 2014-2020 ubulem,  Bektur Mambetov <berkut87@gmail.com>
+Copyright (C) 2014-2021 MoNTE48, Maksim Gamarnik <MoNTE48@mail.ua>
+Copyright (C) 2014-2021 ubulem,  Bektur Mambetov <berkut87@gmail.com>
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU Lesser General Public License as published by
@@ -18,24 +18,24 @@ with this program; if not, write to the Free Software Foundation, Inc.,
 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 */
 
-package com.multicraft.game.helpers;
+package com.multicraft.game.helpers
 
-import android.app.Activity;
+import android.os.Build
+import android.os.Build.VERSION.SDK_INT
+import android.os.Build.VERSION_CODES.KITKAT
+import android.os.Build.VERSION_CODES.O
 
-public class AdManager {
-	public static void initAd(final Activity activity, boolean consent) {
-		// NDA code here
+object ApiLevelHelper {
+	private fun isGreaterOrEqual(versionCode: Int): Boolean {
+		return SDK_INT >= versionCode
 	}
 
-	public static void setAdsCallback(final Activity activity) {
-		// NDA code here
-	}
+	val isKitKat: Boolean
+		get() = isGreaterOrEqual(KITKAT)
 
-	public static void startAd(final Activity activity, boolean isFirstTime, boolean isShowNow) {
-		// NDA code here
-	}
+	val isMarshmallow: Boolean
+		get() = isGreaterOrEqual(Build.VERSION_CODES.M)
 
-	public static void stopAd() {
-		// NDA code here
-	}
+	val isOreo: Boolean
+		get() = isGreaterOrEqual(O)
 }
